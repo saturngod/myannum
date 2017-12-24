@@ -1,3 +1,5 @@
+import Foundation
+
 protocol MyanNum {}
 
 extension MyanNum {
@@ -8,8 +10,7 @@ extension MyanNum {
         }
         let value =  "\(this)".map { (char) -> Int in
             let code = Int(UnicodeScalar(String(char))!.value)
-            
-            return (char == "." || char == "-") ? code : code + 4112
+            return (code >= 48 && code <= 57) ? code + 4112 : code
             }.reduce("") { "\($0)\(String(Character(UnicodeScalar($1)!)))" }
         return value
     }
